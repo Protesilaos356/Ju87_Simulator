@@ -56,6 +56,7 @@ def main():
         # Draw enemies
         player_coords = player.rect.center
         player_radius = player.rect.height / 2
+
         for enemy in enemies:
             enemy.update()
             enemy.draw(surface)
