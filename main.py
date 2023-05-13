@@ -27,7 +27,7 @@ FPS = 60
 
 def main():
     pygame.init()
-    clock = pygame.time.Clock()
+    fps_clock = pygame.time.Clock()
 
     display_surf = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     display_surf.fill(WHITE)
@@ -41,10 +41,7 @@ def main():
     bg_offset = 0
 
     while True:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
+        quit_if_requested()
         player.update()
 
         # Make the background as a moving repetitive grass texture
@@ -66,12 +63,19 @@ def main():
             ennemie_radius = ennemie.rect.height / 2
             if math.sqrt((player_coords[0] - ennemie_coords[0]) ** 2 + (player_coords[1] - ennemie_coords[1]) ** 2) < (
                     player_radius + ennemie_radius):
-                game_over.game_over()
+                game_over.game_over(ennemies, display_surf, player, fps_clock)
 
         player.draw(display_surf)
 
         pygame.display.update()
-        clock.tick(FPS)
+        fps_clock.tick(FPS)
+
+
+def quit_if_requested():
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
 
 
 if __name__ == "__main__":
