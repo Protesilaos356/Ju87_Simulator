@@ -106,7 +106,11 @@ def game_over():
     pygame.display.update()
     for entity in ennemies:
         entity.kill()
+    Contact_boum = pygame.mixer.Sound("sound/boum.mp3")
+    Contact_boum.set_volume(0.03)
+    Contact_boum.play()
     boum = Explosion(player.rect.center[0], player.rect.center[1])
+
     boum.draw(DISPLAYSURF)
 
     # remove P1
