@@ -53,6 +53,10 @@ def main():
             for y in range(-100, SCREEN_HEIGHT, 100):
                 surface.blit(pygame.transform.scale(grass, (100, 100)), (x, y + bg_offset))
 
+        for char in chars:
+            char.update()
+            char.draw(surface)
+
         # Draw enemies
         player_coords = player.rect.center
         player_radius = player.rect.height / 2
@@ -67,10 +71,6 @@ def main():
             if math.sqrt((player_coords[0] - enemy_coords[0]) ** 2 + (player_coords[1] - enemy_coords[1]) ** 2) < (
                     player_radius + enemy_radius):
                 game_over.game_over(enemies, surface, player, fps_clock)
-
-        for char in chars:
-            char.update()
-            char.draw(surface)
 
         player.draw(surface)
 

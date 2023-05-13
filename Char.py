@@ -12,6 +12,7 @@ def get_start_pos():
 
 CHAR_SPEED = 3
 
+
 class Char(pygame.sprite.Sprite):
     def __init__(self, char_type: str):
         super().__init__()
@@ -19,6 +20,7 @@ class Char(pygame.sprite.Sprite):
         self.char_type = char_type
 
         self.angle = random.randint(0, 360)
+        self.constant_adding_angle = random.randint(-100, 100) / 200
 
         #self.rotated_image = None
         self.rect = self.base_image.get_rect()
@@ -34,6 +36,8 @@ class Char(pygame.sprite.Sprite):
 
     def update(self):
         self.compute_rotated_image()
+
+        angle_rad = (self.angle - 90) / 180 * math.pi
 
         # move in the direction of the angle
         x = CHAR_SPEED * math.cos(angle_rad)
