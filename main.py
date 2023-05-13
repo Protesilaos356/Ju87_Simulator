@@ -4,6 +4,7 @@ import sys
 import pygame
 from pygame.locals import *
 
+import Char
 import Enemy
 import Player
 import game_over
@@ -54,9 +55,9 @@ def main():
         # Draw ennemies
         player_coords = player.rect.center
         player_radius = player.rect.height / 2
-        for ennemie in ennemies:
-            ennemie.move()
-            ennemie.draw(display_surf)
+        for enemy in enemies:
+            enemy.update()
+            enemy.draw(surface)
 
             # collision detection
             ennemie_coords = ennemie.rect.center

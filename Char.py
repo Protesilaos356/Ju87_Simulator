@@ -1,5 +1,5 @@
 import pygame
-
+import random
 import main
 
 class Char(pygame.sprite.Sprite):
