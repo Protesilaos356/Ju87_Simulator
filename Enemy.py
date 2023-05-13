@@ -4,6 +4,7 @@ import pygame
 
 import main
 
+ENEMY_SPEED = 10
 
 
 def get_start_pos():
@@ -21,8 +22,7 @@ class Enemy(pygame.sprite.Sprite):
     def update(self):
         self.rect.move_ip(0, ENEMY_SPEED)
         if self.rect.bottom > main.SCREEN_HEIGHT + 50:
-            self.rect.top = 0
-            self.rect.center = self.get_start_pos()
+            self.rect.center = get_start_pos()
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
