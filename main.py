@@ -141,9 +141,9 @@ while True:
 
     # Make the background as a moving repetitive grass texture
     bg_offset += BACKGROUND_SPEED
-    BA = bg_offset % 100
-    for x in range(-1, SCREEN_WIDTH, 100):
-        for y in range(-1, SCREEN_HEIGHT, 100):
+    bg_offset = bg_offset % 100
+    for x in range(0, SCREEN_WIDTH, 100):
+        for y in range(-100, SCREEN_HEIGHT, 100):
             DISPLAYSURF.blit(pygame.transform.scale(grass, (100, 100)), (x, y + bg_offset))
 
     # Draw ennemies
